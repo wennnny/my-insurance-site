@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
-  // 1. 宣告欄位 State
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [goal, setGoal] = useState('想了解投資型保單與 ETF (如 0050/00878) 的搭配方式');
@@ -12,7 +11,6 @@ export default function BookingForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 2. 呼叫 API 路由傳送資料
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -50,7 +48,7 @@ export default function BookingForm() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="例如：David" 
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-900 bg-white"
               />
             </div>
             <div>
@@ -61,7 +59,7 @@ export default function BookingForm() {
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
                 placeholder="請留下方便聯繫的方式" 
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-900 bg-white"
               />
             </div>
             <div>
@@ -69,12 +67,11 @@ export default function BookingForm() {
               <select 
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-900 bg-white"
               >
                 <option value="想了解投資型保單與 ETF (如 0050/00878) 的搭配方式">想了解投資型保單與 ETF (如 0050/00878) 的搭配方式</option>
                 <option value="評估現有保單是否需要調整">評估現有保單是否需要調整</option>
                 <option value="規劃退休金與家庭高額保障">規劃退休金與家庭高額保障</option>
-                <option value="規劃退休金與家庭高額保障">其他</option>
               </select>
             </div>
             <button 
